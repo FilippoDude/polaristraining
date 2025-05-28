@@ -149,8 +149,11 @@ export default function Home() {
               <div className="rounded-[36px] absolute w-[194px] h-[194px] bg-green-400 -rotate-12 left-3 overflow-hidden">
                 <Image src={"/duranImage.jpg"} fill={true} alt="Duran"></Image>
               </div>
-              <div className="relative z-10 rounded-[36px] w-[244px] h-[244px] bg-red-200 overflow-hidden">
-                <Image src={"/nirvanaImage.jpg"} fill={true} alt="Nirvana"></Image>
+              <div className="relative flex items-center justify-center w-[244px] h-[244px] rounded-[36px] shadow-[0px_24px_50px_16px_rgba(0,0,0,0.5)]">
+                <div className="absolute z-10 inset-0 flex items-center justify-center overflow-hidden rounded-[36px]" >
+                  <Image src={"/nirvanaImage.jpg"} className="object-cover w-full h-full" objectFit="cover" fill={true} alt="Nirvana"></Image>
+                </div>
+                <div className="absolute z-20 w-full h-full rounded-[36px] border-[rgba(255,255,255,0.05)] border-[2px]"></div>
               </div>
               <div className="rounded-[36px] absolute w-[194px] h-[194px] bg-blue-500 rotate-12 right-3 overflow-hidden">
                 <Image src={"/dreamlandImage.jpg"} fill={true} alt="Dreamland"></Image>
@@ -243,7 +246,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
 
 
         <div className="absolute left-0 bottom-0 w-full flex flex-row justify-center ">
