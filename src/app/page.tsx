@@ -3,7 +3,10 @@
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { SplitText } from "gsap/SplitText";
+import { CustomEase } from "gsap/CustomEase";
+import { SlowMo } from "gsap/EasePack";
 import Image from "next/image";
+gsap.registerPlugin(SlowMo,CustomEase);
 gsap.registerPlugin(SplitText)
 /*
         <div className="absolute w-full h-full filter brightness-50">
@@ -18,28 +21,66 @@ gsap.registerPlugin(SplitText)
 */
 export default function Home() {
   const speedNumberRef = useRef<HTMLParagraphElement | null>(null);
+  const gearNumberRef = useRef<HTMLParagraphElement | null>(null);
+
   const leftIndicatorRef = useRef<HTMLDivElement | null>(null);
   const rightIndicatorRef = useRef<HTMLDivElement | null>(null);
+
+  const devicePlayerRef = useRef<HTMLDivElement | null>(null);
+  const leftPlayerImageRef = useRef<HTMLDivElement | null>(null);
+  const centerPlayerImageRef = useRef<HTMLDivElement | null>(null);
+  const rightPlayerImageRef = useRef<HTMLDivElement | null>(null);
+  const titlePlayerRef = useRef<HTMLParagraphElement | null>(null);
+  const subtitlePlayerRef = useRef<HTMLParagraphElement | null>(null);
+  const timePassedPlayerRef = useRef<HTMLParagraphElement | null>(null);
+  const timeLeftPlayerRef = useRef<HTMLParagraphElement | null>(null);
+  const timeProgressRef = useRef<HTMLDivElement | null>(null);
+  const timeProgressContainerRef = useRef<HTMLDivElement | null>(null);
+
   const titleRef = useRef<HTMLHeadingElement | null>(null);
 
+  const oilLineRef = useRef<HTMLDivElement | null>(null);
+  const petrolLineRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
-    if(titleRef.current != null){
-      let split = new SplitText(titleRef.current, {
+    if(titlePlayerRef.current != null){
+      let split = new SplitText(titlePlayerRef.current, {
           type: "words, chars",
           position: "relative"
         }
       )
       gsap.from(split.chars, {
         duration: 1, 
-        y: 50,     
+        y: 1,     
         autoAlpha: 0,  
         stagger: 0.05,  
       });
     }
 
+    if(subtitlePlayerRef.current != null){
+      let split = new SplitText(subtitlePlayerRef.current, {
+          type: "words, chars",
+          position: "relative"
+        }
+      )
+      gsap.from(split.chars, {
+        delay: 1,
+        duration: 0.5, 
+        y: 1,     
+        autoAlpha: 0,  
+        stagger: 0.05,  
+      });
+    }
 
-    if(speedNumberRef.current != null){
+    if(speedNumberRef.current != null, gearNumberRef.current != null){
       gsap.from(speedNumberRef.current, {
+        innerText: 0,
+        duration: 2.5,
+        snap : {
+          innerText: 1
+        }
+      });
+      gsap.from(gearNumberRef.current, {
         innerText: 0,
         duration: 1,
         snap : {
@@ -59,8 +100,48 @@ export default function Home() {
         rightIndicatorRef.current,
         { opacity: 0, y: 50 },      
         { opacity: 1, y: 0, duration: 2.5, ease: "power3.out" } 
-      );    }
+      );    
+    }
     
+
+    if(devicePlayerRef.current != null){
+      gsap.from(
+        devicePlayerRef.current,
+        { width: 0, duration: 2.5, ease: "power1.out" },      
+      );    
+    }
+    if(rightPlayerImageRef.current != null && centerPlayerImageRef.current != null && leftPlayerImageRef.current != null){
+      gsap.from(
+        rightPlayerImageRef.current,
+        {delay: 1, opacity: 0, x: -75, rotationZ: 0, duration: 2.5, ease: "power3.out" },   
+      );    
+      gsap.from(
+        centerPlayerImageRef.current,
+        { opacity: 0, duration: 1, ease: "power1.out"},   
+      );    
+      gsap.from(
+        leftPlayerImageRef.current,
+        {delay: 1, opacity: 0, x: 75 , rotationZ: 0, duration: 2.5, ease: "power3.out" },      
+      );    
+    }
+
+    if(timeProgressContainerRef.current != null && timeProgressRef.current != null){
+      gsap.from(
+        timeProgressRef.current,
+        { width: 0, duration: 1, ease: "power1.out" },      
+      );    
+    }
+
+    if(timeLeftPlayerRef.current != null){
+      gsap.from(
+        timeLeftPlayerRef.current,
+        { opacity: 0, duration: 2.5, ease: "power3.out" },   
+      );    
+      gsap.from(
+        timePassedPlayerRef.current,
+        { opacity: 0, duration: 2.5, ease: "power3.out" },   
+      );    
+    }
   },[]);
 
   return (
@@ -144,7 +225,7 @@ export default function Home() {
                 <Image src={"/leftIndicatorUpArrow.svg"} alt={"Left indicator up arrow svg"} fill={true}/>
               </div>
               <div className="w-[94px] h-[120px] relative flex items-center justify-center">
-                <div className="text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] font-display-variable text-outline">2</div>
+                <div ref={gearNumberRef} className="text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] font-display-variable text-outline">2</div>
                 <div className="absolute opacity-50 text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] blur-[25px] font-display-variable text-outline">2</div>
               </div>
               <p className="mt-[24px] h-[18px] text-center justify-start text-cyan-100 text-2xl font-medium leading-[0.77]">ECO</p>
@@ -167,27 +248,27 @@ export default function Home() {
           {/* Center music player */}
           <div className="relative w-[452px] h-[529px] flex flex-col items-center">
             
-            <div className="relative w-[134px] h-[31px] flex items-center justify-center gap-[10px]">
+            <div ref={devicePlayerRef} className="relative w-[134px] h-[31px] flex items-center justify-center gap-[10px] overflow-hidden">
                 <Image src={"/bluetoothDeviceButton.svg"} fill={true} alt="bluetooth button"></Image>
                 {/*2 pixel più grande visto che Figma non conta i bordi nella width e height */}
                 <Image src={"/bluetoothLogo.svg"} width={9} height={13} alt="bluetooth button"></Image>
-                <p className="text-[#FFFFFFBF] leading-[0.77] text-[14px] font-medium device-player-text-outline">iPhone 16 Pro</p>
+                <p className="text-[#FFFFFFBF] leading-[0.77] text-[14px] font-medium device-player-text-outline whitespace-nowrap">iPhone 16 Pro</p>
             </div>
             <div className="mt-[24px] relative h-[244px] w-full flex justify-center items-center">
               
-              <div className="opacity-50 rounded-[36px] absolute w-[194px] h-[194px] bg-green-400 -rotate-12 left-3 overflow-hidden shadow-[0_24px_50px_0_rgba(0,0,0,0.3)] mix-blend-luminosity">
+              <div ref={leftPlayerImageRef} className="opacity-50 rounded-[36px] absolute w-[194px] h-[194px] bg-green-400 -rotate-12 left-3 overflow-hidden shadow-[0_24px_50px_0_rgba(0,0,0,0.3)] mix-blend-luminosity">
                 <Image src={"/duranImage.jpg"} fill={true} alt="Duran"></Image>
                 <div className="z-10 absolute inset-0 bg-gray-700 opacity-50 pointer-events-none" />
               </div>
               
-              <div className="relative flex items-center justify-center w-[244px] h-[244px] rounded-[36px] shadow-[0px_24px_50px_16px_rgba(0,0,0,0.5)]">
+              <div ref={centerPlayerImageRef} className="opacity-100 relative flex items-center justify-center w-[244px] h-[244px] rounded-[36px] shadow-[0px_24px_50px_16px_rgba(0,0,0,0.5)]">
                 <div className="absolute z-10 inset-0 flex items-center justify-center overflow-hidden rounded-[36px]" >
                   <Image src={"/nirvanaImage.jpg"} className="object-cover w-full h-full" objectFit="cover" fill={true} alt="Nirvana"></Image>
                 </div>
                 <div className="absolute z-20 w-full h-full rounded-[36px] border-[rgba(255,255,255,0.05)] border-[2px]"></div>
               </div>
 
-              <div className="opacity-50 rounded-[36px] absolute w-[194px] h-[194px] bg-blue-500 rotate-12 right-3 overflow-hidden shadow-[0_24px_50px_0_rgba(0,0,0,0.3)] mix-blend-luminosity">
+              <div ref={rightPlayerImageRef}  className="opacity-50 rounded-[36px] absolute w-[194px] h-[194px] bg-blue-500 rotate-12 right-3 overflow-hidden shadow-[0_24px_50px_0_rgba(0,0,0,0.3)] mix-blend-luminosity">
                 <Image src={"/dreamlandImage.jpg"} fill={true} alt="Dreamland"></Image>
                 <div className="z-10 absolute inset-0 bg-gray-700 opacity-50 pointer-events-none" />
               </div>
@@ -196,16 +277,16 @@ export default function Home() {
             <div className="relative mt-[25px] w-[290px]">
               <div className="relative min-h-[25px] h-[25px] w-full ">
                 <div className="absolute top-0 min-h-[11px] h-[11px] w-full overflow-hidden">
-                  <p className="absolute top-0 left-0 text-[14px] leading-[0.77] font-medium text-[#FFFFFF] opacity-75">0:49</p>
-                  <p className="absolute top-0 right-0 text-[14px] leading-[0.77] font-medium text-[#FFFFFF] opacity-75">-3:21</p>
+                  <p ref={timePassedPlayerRef} className="absolute top-0 left-0 text-[14px] leading-[0.77] font-medium text-[#FFFFFF] opacity-75">0:49</p>
+                  <p ref={timeLeftPlayerRef} className="absolute top-0 right-0 text-[14px] leading-[0.77] font-medium text-[#FFFFFF] opacity-75">-3:21</p>
                 </div>
-                <div className="absolute bottom-0 w-full h-[6px] min-h-[6px]">
-                  <div className="absolute rounded-2xl left-0 top-0 w-full h-full bg-[#FFFFFF] opacity-10"></div>
-                  <div className="absolute rounded-2xl left-0 w-[113px] h-full bg-[#FFFFFF] opacity-50"></div>
+                <div ref={timeProgressContainerRef} className="absolute bottom-0 w-full h-[6px] min-h-[6px]">
+                  <div  className="absolute rounded-2xl left-0 top-0 w-full h-full bg-[#FFFFFF] opacity-10"></div>
+                  <div ref={timeProgressRef} className="absolute rounded-2xl left-0 w-[113px] h-full bg-[#FFFFFF] opacity-50"></div>
                 </div>
               </div>
-              <p className="text-center mt-[32px] h-[20px] text-[26px] leading-[0.77] text-[#FFFFFF] font-medium">Smells like Teen Spirit</p>
-              <p className="text-center mt-[18px] h-[14px] text-[18px] leading-[0.77] text-[#FFFFFF] opacity-50 font-medium">Nirvana</p>
+              <p ref={titlePlayerRef} className="text-center mt-[32px] h-[20px] text-[26px] leading-[0.77] text-[#FFFFFF] font-medium">Smells like Teen Spirit</p>
+              <p ref={subtitlePlayerRef} className="text-center mt-[18px] h-[14px] text-[18px] leading-[0.77] text-[#FFFFFF] opacity-50 font-medium">Nirvana</p>
             </div>
             <nav className="h-[36px] w-[296px] mt-[61px] flex flex-row gap-[24px] items-center">
               <div className="relative w-[28px] h-[28px]">
