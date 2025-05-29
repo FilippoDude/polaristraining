@@ -219,22 +219,52 @@ export default function Home() {
           {/* Left eco indicator */}
           <div ref={leftIndicatorRef} className="absolute left-0 w-[708px] h-[628px] flex items-center justify-center">
             <div className="absolute w-[625px] h-[625px] -rotate-90 bg-gradient-to-b from-emerald-300/5 to-emerald-300/0 rounded-[216.5px]"></div>
-            <div className="absolute min-w-[708px] w-[708px] min-h-[628px] h-[628px] z-10"><Image src={"/leftIndicatorLines.svg"} alt={"Left indicator lines"} fill={true}/></div>
-            <div className="absolute min-w-[628px] w-[628px] min-h-[628px] h-[628px] z-20 flex items-center justify-center overflow-hidden"><Image src={"/leftIndicatorBorderFade.svg"} alt={"Left indicator border fade"} fill={true}/></div>
+            {/*<div className="absolute min-w-[708px] w-[708px] min-h-[628px] h-[628px] z-10"><Image src={"/leftIndicatorLines.svg"} alt={"Left indicator lines"} fill={true}/> </div>*/}
+            
+            {/*Remaking by hand here*/}
+            <div className="absolute w-full h-full flex items-center justify-center">
+              <div className="absolute w-[456px] h-[456px] border-[2px] border-dashed border-[#FFFFFF20] p-4 rounded-[130px]"/>
+              <div className="absolute w-[280px] h-[280px] border-[2px] border-[#FFFFFF20] p-4 rounded-[62px]"/>
+              <div className="w-[626.5px] h-[626.5px] absolute border-[1.5px] border-[#FFFFFF40] rounded-[216.5px]"></div>
+            </div>
+            {/*<div className="absolute min-w-[628px] w-[628px] min-h-[628px] h-[628px] z-20 flex items-center justify-center overflow-hidden"><Image src={"/leftIndicatorBorderFade.svg"} alt={"Left indicator border fade"} fill={true}/></div>*/}
+            <div className="absolute w-[628px] h-[628px] z-20 test_5"></div>
 
             {/*Qui la width e height è di un pixel più alta a causa di un piccolo distacco che ci sarebbe stato tra il bordo di confine e le linee ad X */}
-            <div className="absolute min-w-[626px] w-[626px] min-h-[626px] h-[626px] z-20 flex items-center justify-center overflow-hidden">
+            {/*<div className="absolute min-w-[626px] w-[626px] min-h-[626px] h-[626px] z-20 flex items-center justify-center overflow-hidden">
               <div className="absolute w-full h-full"><Image src={"/leftIndicatorOuterXLines.svg"} alt={"Left indicator outer X lines"} fill={true}/></div>
-            </div>
+            </div>*/}
           
-            <div className="absolute w-full h-full flex justify-center items-center">
-              <div className="absolute ml-[314px] top-0 w-[314px] h-[314px]"> {/* Margin left the size of the intersection */}
-                <Image src={"/leftIndicatorOuterIntersection.svg"} alt={"Left indicator border fade"} fill={true}/>
+            {/*<div className="absolute w-full h-full flex justify-center items-center circle-reveal">
+              <div className="absolute ml-[314px] top-0 w-[314px] h-[314px]"> {/* Margin left the size of the intersection *}
+                <Image src={"/leftIndicatorOuterIntersection.svg"} alt={"Left indicator outer intersection"} fill={true}/>
               </div>
-              
-              <div className="absolute ml-[228px] mb-[228px] w-[228px] h-[228px]"> {/* Margin bottom and left half the size of the intersection */}
-                <Image src={"/leftIndicatorInnerIntersection.svg"} alt={"Left indicator border fade"} fill={true}/>
+              <div className="absolute ml-[228px] mb-[228px] w-[228px] h-[228px]"> {/* Margin bottom and left half the size of the intersection *}
+                <Image src={"/leftIndicatorInnerIntersection.svg"} alt={"Left indicator inner intersection"} fill={true}/>
               </div>
+              <div className="absolute w-full h-full"></div>
+            </div>*/}
+
+            <div className="absolute w-[626px] h-[626px] circle-reveal">
+              <div className="absolute test_2 w-full h-full"></div>
+            </div>
+            <div className="absolute w-[456px] h-[456px] circle-reveal">
+              <div className="absolute test_3 w-full h-full"></div>
+              <div className="absolute test_4 w-full h-full"></div>
+            </div>
+            
+            <div className="absolute w-full h-full">
+              <div className="absolute left-[102.5px] top-[72px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] rotate-45"/>
+              <div className="absolute left-[102.5px] bottom-[72px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] -rotate-45"/>
+              <div className="absolute right-[101.5px] top-[72.5px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] -rotate-45"/>
+              <div className="absolute right-[101.5px] bottom-[72.5px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] rotate-45"/>
+            </div>
+
+            <div className="absolute w-full h-full flex items-center justify-center">
+              <div className="absolute left-0 bg-[linear-gradient(to_right,_#3F4343,_#00000000)] w-66 h-[1.6px]"/>
+              <div className="absolute right-0 bg-[linear-gradient(to_right,_#3F4343,_#00000000)] w-66 h-[1.6px] rotate-180"/>
+              <div className="absolute top-[1px] bg-[linear-gradient(to_bottom,_#3F4343,_#00000000)] h-58 w-[1.6px]"/>
+              <div className="absolute bottom-[1px] bg-[linear-gradient(to_top,_#3F4343,_#00000000)] h-58 w-[1.6px]"/>
             </div>
 
             <div className="relative w-full h-full flex flex-col items-center justify-center">
@@ -417,6 +447,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div className="relative test_1 w-100 h-100"></div>
     </> 
   );
 }
