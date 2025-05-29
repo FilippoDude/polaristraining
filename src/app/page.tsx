@@ -523,11 +523,11 @@ export default function Home() {
             </div>
             <div className="absolute left-[4px] bottom-[4px] bg-[#FFFFFF0D] w-[245px] h-[35px] rounded-tl-[20px] rounded-b-[4px] rounded-tr-[4px]">
               <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFF80] bottom-[11px] left-[16px] whitespace-nowrap">PW LOAD</p>
-              <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFFBF] bottom-[11px] right-[44px] whitespace-nowrap">72 %</p>
+              <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFFBF] bottom-[11px] right-[44px] whitespace-nowrap">72 <span className="font-normal">%</span></p>
             </div>
 
             <div className="absolute h-[14px] right-[21.5px] bottom-[15px] flex flex-row">
-              <p className="text-[18px] leading-[0.77] font-medium text-[#FFFFFF] opacity-25 whitespace-nowrap">100 %</p>
+              <p className="text-[18px] leading-[0.77] font-medium text-[#FFFFFF] opacity-25 whitespace-nowrap">100 <span className="font-normal">%</span></p>
             </div>
 
           </div>
