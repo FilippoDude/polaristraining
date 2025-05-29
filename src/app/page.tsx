@@ -258,6 +258,13 @@ export default function Home() {
               <div className="absolute right-[101.5px] top-[72.5px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] -rotate-45"/>
               <div className="absolute right-[101.5px] bottom-[72.5px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] rotate-45"/>
             </div>
+            
+            <div className="absolute w-[628px] h-[628px]">
+              <p className="absolute left-[25.5px] top-[28.5px] text-[#FFFFFF80] leading-[0.77] text-[24px] font-normal font-display-variable">7</p>
+              <p className="absolute right-[29.5px] top-[28.5px] text-[#FFFFFF80] leading-[0.77] text-[24px] font-normal font-display-variable">1</p>
+              <p className="absolute left-[24.5px] bottom-[28.5px] text-[#FFFFFF80] leading-[0.77] text-[24px] font-normal font-display-variable">5</p>
+              <p className="absolute right-[25.5px] bottom-[28.5px] text-[#FFFFFF80] leading-[0.77] text-[24px] font-normal font-display-variable">3</p>
+            </div>
 
             <div className="absolute w-full h-full flex items-center justify-center">
               <div className="absolute left-0 bg-[linear-gradient(to_right,_#3F4343,_#00000000)] w-66 h-[1.6px]"/>
@@ -397,6 +404,13 @@ export default function Home() {
               <div className="absolute test_7 w-full h-full"></div>
             </div>
 
+            <div className="absolute w-[628px] h-[628px]">
+              <p className="absolute left-[25.5px] top-[28.5px] text-[#FFFFFF80] leading-[0.77] text-[24px] font-normal font-display-variable">150</p>
+              <p className="absolute right-[29.5px] top-[28.5px] text-[#FFFFFF80] leading-[0.77] text-[24px] font-normal font-display-variable">20</p>
+              <p className="absolute left-[24.5px] bottom-[28.5px] text-[#FFFFFF80] leading-[0.77] text-[24px] font-normal font-display-variable">100</p>
+              <p className="absolute right-[25.5px] bottom-[28.5px] text-[#FFFFFF80] leading-[0.77] text-[24px] font-normal font-display-variable">70</p>
+            </div>
+
             <div className="relative w-full h-full flex items-center justify-center">
               <div className=" h-[120px] relative flex items-center justify-center">
                 <div className="absolute -top-[84px] min-w-[56px] min-h-[56px] w-[56px] h-[56px]">
@@ -406,8 +420,6 @@ export default function Home() {
                 <div className="absolute opacity-50 text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] blur-[25px] font-display-variable text-outline">35</div>
                 <p className="absolute -bottom-[46px] h-[18px] text-center justify-start text-[#FFFFFF80] text-[24px] font-medium leading-[0.77]">km/h</p>
               </div>
-            
-
             </div>
 
             {/* Dashes (bottom negativo per non alzare l'elemento, calcolato aggiungendo alla height di un dash la height del margine: 12.5px + 4px = 16.5px) */}
@@ -461,7 +473,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="relative test_1 w-100 h-100"></div>
     </> 
   );
 }
