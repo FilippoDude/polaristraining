@@ -244,10 +244,10 @@ export default function Home() {
               <div className="absolute w-full h-full"></div>
             </div>*/}
 
-            <div className="absolute w-[626px] h-[626px] circle-reveal opacity-[0.85]">
+            <div className="absolute w-[626px] h-[626px] circle-reveal">
               <div className="absolute test_2 w-full h-full"></div>
             </div>
-            <div className="absolute w-[456px] h-[456px] circle-reveal opacity-[0.75]">
+            <div className="absolute w-[456px] h-[456px] circle-reveal ">
               <div className="absolute test_3 w-full h-full"></div>
               <div className="absolute test_4 w-full h-full"></div>
             </div>
@@ -267,14 +267,15 @@ export default function Home() {
             </div>
 
             <div className="relative w-full h-full flex flex-col items-center justify-center">
-              <div className="relative mb-[24px] min-w-[34px] min-h-[35px] w-[34px] h-[35px]">
-                <Image src={"/leftIndicatorUpArrow.svg"} alt={"Left indicator up arrow svg"} fill={true}/>
-              </div>
               <div className="w-[94px] h-[120px] relative flex items-center justify-center">
+                <div className="absolute -top-[59px] min-w-[34px] min-h-[35px] w-[34px] h-[35px]">
+                  <Image src={"/leftIndicatorUpArrow.svg"} alt={"Left indicator up arrow svg"} fill={true}/>
+                </div>
                 <div ref={gearNumberRef} className="text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] font-display-variable text-outline">2</div>
                 <div className="absolute opacity-50 text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] blur-[25px] font-display-variable text-outline">2</div>
+                <p className="absolute -bottom-[46px] h-[18px] text-center justify-start text-cyan-100 text-2xl font-medium leading-[0.77]">ECO</p>
               </div>
-              <p className="mt-[24px] h-[18px] text-center justify-start text-cyan-100 text-2xl font-medium leading-[0.77]">ECO</p>
+              
 
             </div>
 
@@ -379,31 +380,32 @@ export default function Home() {
             </div>
             
             <div className="absolute w-full h-full flex items-center justify-center">
-              <div className="absolute left-0 bg-[linear-gradient(to_right,_#3F4343,_#00000000)] w-66 h-[1.6px]"/>
-              <div className="absolute right-0 bg-[linear-gradient(to_right,_#3F4343,_#00000000)] w-66 h-[1.6px] rotate-180"/>
-              <div className="absolute top-[1px] bg-[linear-gradient(to_bottom,_#3F4343,_#00000000)] h-58 w-[1.6px]"/>
-              <div className="absolute bottom-[1px] bg-[linear-gradient(to_top,_#3F4343,_#00000000)] h-58 w-[1.6px]"/>
+              <div className="absolute left-0 bg-[linear-gradient(to_right,_#3F4343,_#00000000)] w-58 h-[1.6px]"/>
+              <div className="absolute right-0 bg-[linear-gradient(to_right,_#3F4343,_#00000000)] w-58 h-[1.6px] rotate-180"/>
+              <div className="absolute top-[1px] bg-[linear-gradient(to_bottom,_#3F4343,_#00000000)] h-48 w-[1.6px]"/>
+              <div className="absolute bottom-[1px] bg-[linear-gradient(to_top,_#3F4343,_#00000000)] h-48 w-[1.6px]"/>
             </div>
 
             <div className="absolute w-[628px] h-[628px] z-20 test_5"></div>
 
-            <div className="absolute w-[626px] h-[626px] circle-reveal opacity-[0.85]">
+            <div className="absolute w-[626px] h-[626px] circle-reveal">
               <div className="absolute test_2 w-full h-full"></div>
             </div>
-            <div className="absolute w-[456px] h-[456px] circle-reveal opacity-[0.75]">
+            <div className="absolute w-[456px] h-[456px] circle-reveal ">
               <div className="absolute test_6 w-full h-full"></div>
               <div className="absolute test_7 w-full h-full"></div>
             </div>
 
-            <div className="relative w-full h-full flex flex-col items-center justify-center">
-              <div className="relative mb-[28px] min-w-[56px] min-h-[56px] w-[56px] h-[56px]">
-                <Image src={"/speedLimit.png"} alt={"Speed limit"} fill={true}/>
-              </div>
+            <div className="relative w-full h-full flex items-center justify-center">
               <div className=" h-[120px] relative flex items-center justify-center">
+                <div className="absolute -top-[84px] min-w-[56px] min-h-[56px] w-[56px] h-[56px]">
+                  <Image src={"/speedLimit.png"} alt={"Speed limit"} fill={true}/>
+                </div>
                 <div ref={speedNumberRef} className="text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] font-display-variable text-outline">35</div>
                 <div className="absolute opacity-50 text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] blur-[25px] font-display-variable text-outline">35</div>
+                <p className="absolute -bottom-[46px] h-[18px] text-center justify-start text-[#FFFFFF80] text-[24px] font-medium leading-[0.77]">km/h</p>
               </div>
-              <p className="mt-[28px] h-[18px] text-center justify-start text-[#FFFFFF80] text-[24px] font-medium leading-[0.77]">km/h</p>
+            
 
             </div>
 
