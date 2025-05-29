@@ -42,6 +42,9 @@ export default function Home() {
   const oilLineRef = useRef<HTMLDivElement | null>(null);
   const petrolLineRef = useRef<HTMLDivElement | null>(null);
 
+  const altitudeContainerRef = useRef<HTMLDivElement | null>(null);
+  const pwloadContainerRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     if(titlePlayerRef.current != null){
       let split = new SplitText(titlePlayerRef.current, {
@@ -154,6 +157,20 @@ export default function Home() {
       gsap.from(
         petrolLineRef.current,
         {opacity: 0, width: 0, duration: 1, ease: "power1.out" },      
+      );    
+    }
+
+    if(altitudeContainerRef.current != null){
+      gsap.from(
+        altitudeContainerRef.current,
+        {delay: 1, y: 50, duration: 1, ease: "power1.out" },      
+      );    
+    }
+
+    if(pwloadContainerRef.current != null){
+      gsap.from(
+        pwloadContainerRef.current,
+        {delay: 1, y: 50, duration: 1, ease: "power1.out" },      
       );    
     }
   },[]);
@@ -380,6 +397,7 @@ export default function Home() {
             <div className="absolute min-w-[626px] w-[626px] min-h-[626px] h-[626px] z-20 flex items-center justify-center overflow-hidden">
               <div className="absolute w-full h-full"><Image src={"/rightIndicatorOuterXLines.svg"} alt={"Left indicator outer X lines"} fill={true}/></div>
             </div>
+            
           
             <div className="absolute w-full h-full flex items-center justify-center">
               <div className="absolute w-[456px] h-[456px] border-[2px] border-dashed border-[#FFFFFF20] p-4 rounded-[130px]"/>
@@ -403,6 +421,18 @@ export default function Home() {
               <div className="absolute test_6 w-full h-full"></div>
               <div className="absolute test_7 w-full h-full"></div>
             </div>
+
+            {/*
+              to do
+            <div className="absolute w-full h-full">
+              <div className="absolute left-[102.5px] top-[72px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] rotate-45"/>
+              <div className="absolute left-[43.8px] top-[189px] bg-[#FFFFFF] opacity-20 w-[24px] h-[1.5px] rotate-22"/>
+              <div className="absolute left-[102.5px] bottom-[72px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] -rotate-45"/>
+              <div className="absolute right-[101.5px] top-[72.5px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] -rotate-45"/>
+              <div className="absolute right-[101.5px] bottom-[72.5px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] rotate-45"/>
+              
+            </div>*/}
+
 
             <div className="absolute w-[628px] h-[628px]">
               <p className="absolute left-[25.5px] top-[28.5px] text-[#FFFFFF80] leading-[0.77] text-[24px] font-normal font-display-variable">150</p>
@@ -438,7 +468,7 @@ export default function Home() {
 
 
         <div className="absolute left-0 bottom-0 w-full flex flex-row justify-center ">
-          <div className="absolute bottom-0 left-[171px] w-[359px] h-[43px] ">
+          <div ref={altitudeContainerRef} className="absolute bottom-0 left-[171px] w-[359px] h-[43px] ">
             <div className="absolute left-0 top-0 w-full h-full ">
               <div className="absolute w-full h-full bottom-elements-border"></div>
               {/*<Image src={"/bottomLeftDistanceBackground.svg"} fill={true} alt="Background"></Image>*/}
@@ -453,10 +483,10 @@ export default function Home() {
             </div>
 
           </div>
+
           <p className="text-[24px] leading-[0.77] font-medium text-[#FFFFFF] opacity-25 mb-[10px]">105.302 <span className="font-normal">km</span></p>
         
-          {/* 3 pixel aggiunti visto che Figma non conta i bordi nella width e height */}
-          <div className="absolute bottom-0 right-[171px] w-[359px] h-[43px] ">
+          <div ref={pwloadContainerRef} className="absolute bottom-0 right-[171px] w-[359px] h-[43px] ">
             <div className="absolute left-0 top-0 w-full h-full">
               <div className="absolute w-full h-full bottom-elements-border"></div>
               {/*<Image src={"/bottomLeftDistanceBackground.svg"} fill={true} alt="Background"></Image>*/}
