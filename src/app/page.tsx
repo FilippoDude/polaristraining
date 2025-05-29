@@ -23,6 +23,10 @@ export default function Home() {
   const speedNumberRef = useRef<HTMLParagraphElement | null>(null);
   const gearNumberRef = useRef<HTMLParagraphElement | null>(null);
 
+  const destinationTextRef = useRef<HTMLParagraphElement | null>(null);
+  const destinationContainerRef = useRef<HTMLParagraphElement | null>(null);
+  const destinationIconRef = useRef<HTMLParagraphElement | null>(null);
+
   const leftIndicatorRef = useRef<HTMLDivElement | null>(null);
   const rightIndicatorRef = useRef<HTMLDivElement | null>(null);
 
@@ -59,6 +63,24 @@ export default function Home() {
         stagger: 0.05,  
       });
     }
+
+    if(destinationTextRef.current != null && destinationContainerRef.current != null){
+      let split = new SplitText(destinationTextRef.current, {
+          type: "words, chars",
+          position: "relative"
+        }
+      )
+      gsap.from(split.chars, {
+        delay: 2,
+        duration: 1, 
+        stagger: 0.05,  
+      });
+      gsap.from(
+        destinationContainerRef.current,
+        {delay: 2,opacity: 0, width: 0, duration: 1, ease: "power1.out" },      
+      );    
+    }
+
 
     if(subtitlePlayerRef.current != null){
       let split = new SplitText(subtitlePlayerRef.current, {
@@ -110,7 +132,13 @@ export default function Home() {
     if(devicePlayerRef.current != null){
       gsap.from(
         devicePlayerRef.current,
-        { width: 0, duration: 2.5, ease: "power1.out" },      
+        {     
+          scale: 0,
+          opacity: 0,
+          delay: 2,
+          duration: 0.6,
+          ease: "back.out(1.7)"
+      },      
       );    
     }
     if(rightPlayerImageRef.current != null && centerPlayerImageRef.current != null && leftPlayerImageRef.current != null){
@@ -201,9 +229,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative mt-[10.5px] flex flex-row gap-[12px]">
-            <Image src={"/navigator.svg"} alt={"Navigator"} width={19} height={19}/>
-            <p className="text-[#FFFFFF40] leading-[0.77] text-[24px] font-medium">Via Giuseppe Campi 103, Modena MO</p>
+          <div ref={destinationContainerRef} className="relative mt-[10.5px] flex flex-row gap-[12px] overflow-hidden">
+            <div ref={destinationIconRef} className="">
+              <Image src={"/navigator.svg"} alt={"Navigator"} width={19} height={19}/>
+            </div>
+            <p ref={destinationTextRef} className=" whitespace-nowrap text-[#FFFFFF40] leading-[0.77] text-[24px] font-medium">Via Giuseppe Campi 103, Modena MO</p>
           </div>
           
           {/* Fuel indicator */}
@@ -229,8 +259,8 @@ export default function Home() {
         <div className="relative flex flex-row w-full h-full items-center justify-center">
 
           {/* Blurred circles */}
-          <div className="absolute w-[1000px] h-[1000px] bg-[#7BD4D3] -left-[545px] blur-[500px] opacity-5 -rotate-180"/>
-          <div className="absolute w-[1000px] h-[1000px] bg-[#7BD4D3] -right-[545px] blur-[500px] opacity-5 -rotate-180"/>
+          <div className="absolute w-[1000px] h-[1000px] bg-[#7BD4D3] -left-[545px] blur-[250px] opacity-5 -rotate-180"/>
+          <div className="absolute w-[1000px] h-[1000px] bg-[#7BD4D3] -right-[545px] blur-[250px] opacity-5 rotate-180"/>
           <div className="absolute z-10 w-[912px] h-[912px] bg-[#7BD4D3] -bottom-[674px] blur-[500px] opacity-10 -rotate-180"/>
           
           {/* Left eco indicator */}
