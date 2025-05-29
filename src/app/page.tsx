@@ -17,6 +17,9 @@ gsap.registerPlugin(SplitText)
         </nav>
 */
 export default function Home() {
+  const speedNumberRef = useRef<HTMLParagraphElement | null>(null);
+  const leftIndicatorRef = useRef<HTMLDivElement | null>(null);
+  const rightIndicatorRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
@@ -33,6 +36,31 @@ export default function Home() {
         stagger: 0.05,  
       });
     }
+
+
+    if(speedNumberRef.current != null){
+      gsap.from(speedNumberRef.current, {
+        innerText: 0,
+        duration: 1,
+        snap : {
+          innerText: 1
+        }
+      });
+    }
+
+    if(leftIndicatorRef.current != null && rightIndicatorRef.current != null){
+      gsap.fromTo(
+        leftIndicatorRef.current,
+        { opacity: 0, y: 50 },      
+        { opacity: 1, y: 0, duration: 2.5, ease: "power3.out" } 
+      );
+
+      gsap.fromTo(
+        rightIndicatorRef.current,
+        { opacity: 0, y: 50 },      
+        { opacity: 1, y: 0, duration: 2.5, ease: "power3.out" } 
+      );    }
+    
   },[]);
 
   return (
@@ -91,7 +119,7 @@ export default function Home() {
           <div className="absolute z-10 w-[912px] h-[912px] bg-[#7BD4D3] -bottom-[674px] blur-[500px] opacity-10 -rotate-180"/>
           
           {/* Left eco indicator */}
-          <div className="absolute left-0 w-[708px] h-[628px] flex items-center justify-center">
+          <div ref={leftIndicatorRef} className="absolute left-0 w-[708px] h-[628px] flex items-center justify-center">
             <div className="absolute w-[625px] h-[625px] -rotate-90 bg-gradient-to-b from-emerald-300/5 to-emerald-300/0 rounded-[216.5px]"></div>
             <div className="absolute min-w-[708px] w-[708px] min-h-[628px] h-[628px] z-10"><Image src={"/leftIndicatorLines.svg"} alt={"Left indicator lines"} fill={true}/></div>
             <div className="absolute min-w-[628px] w-[628px] min-h-[628px] h-[628px] z-20 flex items-center justify-center overflow-hidden"><Image src={"/leftIndicatorBorderFade.svg"} alt={"Left indicator border fade"} fill={true}/></div>
@@ -145,19 +173,25 @@ export default function Home() {
                 <Image src={"/bluetoothLogo.svg"} width={9} height={13} alt="bluetooth button"></Image>
                 <p className="text-[#FFFFFFBF] leading-[0.77] text-[14px] font-medium device-player-text-outline">iPhone 16 Pro</p>
             </div>
-            <div className="mt-[24px] relative h-[244px] w-full bg-red-500 flex justify-center items-center">
-              <div className="rounded-[36px] absolute w-[194px] h-[194px] bg-green-400 -rotate-12 left-3 overflow-hidden">
+            <div className="mt-[24px] relative h-[244px] w-full flex justify-center items-center">
+              
+              <div className="opacity-50 rounded-[36px] absolute w-[194px] h-[194px] bg-green-400 -rotate-12 left-3 overflow-hidden shadow-[0_24px_50px_0_rgba(0,0,0,0.3)] mix-blend-luminosity">
                 <Image src={"/duranImage.jpg"} fill={true} alt="Duran"></Image>
+                <div className="z-10 absolute inset-0 bg-gray-700 opacity-50 pointer-events-none" />
               </div>
+              
               <div className="relative flex items-center justify-center w-[244px] h-[244px] rounded-[36px] shadow-[0px_24px_50px_16px_rgba(0,0,0,0.5)]">
                 <div className="absolute z-10 inset-0 flex items-center justify-center overflow-hidden rounded-[36px]" >
                   <Image src={"/nirvanaImage.jpg"} className="object-cover w-full h-full" objectFit="cover" fill={true} alt="Nirvana"></Image>
                 </div>
                 <div className="absolute z-20 w-full h-full rounded-[36px] border-[rgba(255,255,255,0.05)] border-[2px]"></div>
               </div>
-              <div className="rounded-[36px] absolute w-[194px] h-[194px] bg-blue-500 rotate-12 right-3 overflow-hidden">
+
+              <div className="opacity-50 rounded-[36px] absolute w-[194px] h-[194px] bg-blue-500 rotate-12 right-3 overflow-hidden shadow-[0_24px_50px_0_rgba(0,0,0,0.3)] mix-blend-luminosity">
                 <Image src={"/dreamlandImage.jpg"} fill={true} alt="Dreamland"></Image>
+                <div className="z-10 absolute inset-0 bg-gray-700 opacity-50 pointer-events-none" />
               </div>
+
             </div>
             <div className="relative mt-[25px] w-[290px]">
               <div className="relative min-h-[25px] h-[25px] w-full ">
@@ -201,7 +235,7 @@ export default function Home() {
           </div>
 
           {/* Right speed indicator */}
-          <div className="absolute right-0 w-[708px] h-[628px] flex items-center justify-center">
+          <div ref={rightIndicatorRef} className="absolute right-0 w-[708px] h-[628px] flex items-center justify-center">
             <div className="absolute w-[625px] h-[625px] -rotate-90 bg-gradient-to-b from-emerald-300/5 to-emerald-300/0 rounded-[216.5px]"></div>
             <div className="absolute min-w-[708px] w-[708px] min-h-[628px] h-[628px] z-10"><Image src={"/rightIndicatorLines.svg"} alt={"Left indicator lines"} fill={true}/></div>
             <div className="absolute min-w-[628px] w-[628px] min-h-[628px] h-[628px] z-20 flex items-center justify-center overflow-hidden"><Image src={"/leftIndicatorBorderFade.svg"} alt={"Left indicator border fade"} fill={true}/></div>
@@ -226,7 +260,7 @@ export default function Home() {
                 <Image src={"/speedLimit.png"} alt={"Speed limit"} fill={true}/>
               </div>
               <div className=" h-[120px] relative flex items-center justify-center">
-                <div className="text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] font-display-variable text-outline">35</div>
+                <div ref={speedNumberRef} className="text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] font-display-variable text-outline">35</div>
                 <div className="absolute opacity-50 text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] blur-[25px] font-display-variable text-outline">35</div>
               </div>
               <p className="mt-[28px] h-[18px] text-center justify-start text-[#FFFFFF80] text-[24px] font-medium leading-[0.77]">km/h</p>
