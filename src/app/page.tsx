@@ -142,6 +142,13 @@ export default function Home() {
         { opacity: 0, duration: 2.5, ease: "power3.out" },   
       );    
     }
+
+    if(oilLineRef.current != null){
+      gsap.from(
+        oilLineRef.current,
+        {opacity: 0, width: 0, duration: 1, ease: "power1.out" },      
+      );    
+    }
   },[]);
 
   return (
@@ -153,17 +160,19 @@ export default function Home() {
 
           {/* Oil temperature indicator */}
           <div className="absolute top-0 left-[127px] w-[455px]">
-            <div className="relative w-full h-[10px] bg-[#FFFFFF0D] flex flex-row overflow-hidden rounded-b-[24px]">
-              <div className="rounded-bl-[24px] absolute left-0 h-full w-[160px] bg-[linear-gradient(to_right,_#4B4F4F,_#8E9191)]"/>
+            <div className="relative w-full h-[10px] bg-[#FFFFFF0D] flex flex-row rounded-b-[24px]">
+              <div ref={oilLineRef} className="rounded-bl-[24px] absolute left-0 h-full w-[160px] bg-[linear-gradient(to_right,_#4B4F4F,_#8E9191)]">
+                <div className="absolute -bottom-[30px] -right-[26px] w-[52.5px] flex flex-row gap-[8px]">
+                  <Image src={"/temp.svg"} alt={"Left indicator up arrow svg"} width={16.5} height={18}/>
+                  <p className=" text-[#FFFFFFBF] leading-[0.77] text-[24px] font-medium">41°</p>
+                </div>
+              </div>
               {/* Provato a replicare l'effetto su figma usando la dev mode ma per quanto avessi provato non funziona, ho fatto un linear gradient direttamente ^ */}
               {/*<div className="rounded-bl-[24px] absolute top-0 left-0 h-full w-[160px] bg-[linear-gradient(90deg,_rgba(64,110,109,0)_70.74%,_rgba(123,212,211,0.75)_100%)] "/>*/}
+
             </div>
             <div className="relative mt-[12px] w-full flex flex-row">
               <p className="text-[#FFFFFF40] leading-[0.77] text-[24px] font-medium">0°</p>
-              <div className="relative ml-[112px] w-[52.5px] flex flex-row gap-[8px]">
-                <Image src={"/temp.svg"} alt={"Left indicator up arrow svg"} width={16.5} height={18}/>
-                <p className=" text-[#FFFFFFBF] leading-[0.77] text-[24px] font-medium">41°</p>
-              </div>
               <p className="absolute right-0 text-[#FFFFFF40] leading-[0.77] text-[24px] font-medium ">120°</p>
             </div>
           </div>
