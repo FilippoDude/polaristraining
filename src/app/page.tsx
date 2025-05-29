@@ -295,8 +295,9 @@ export default function Home() {
           {/* Center music player */}
           <div className="relative w-[452px] h-[529px] flex flex-col items-center">
             
-            <div ref={devicePlayerRef} className="relative w-[134px] h-[31px] flex items-center justify-center gap-[10px] overflow-hidden">
-                <Image src={"/bluetoothDeviceButton.svg"} fill={true} alt="bluetooth button"></Image>
+            <div ref={devicePlayerRef} className="relative w-[134px] h-[31px] flex items-center justify-center gap-[10px] overflow-hidden bg-[linear-gradient(to_bottom,_#ffffff0d,_#ffffff03)] rounded-[9px]">
+                {/*<Image src={"/bluetoothDeviceButton.svg"} fill={true} alt="bluetooth button"></Image>*/}
+                <div className="absolute w-full h-full device-player-border "/>
                 {/*2 pixel più grande visto che Figma non conta i bordi nella width e height */}
                 <Image src={"/bluetoothLogo.svg"} width={9} height={13} alt="bluetooth button"></Image>
                 <p className="text-[#FFFFFFBF] leading-[0.77] text-[14px] font-medium device-player-text-outline whitespace-nowrap">iPhone 16 Pro</p>
@@ -425,13 +426,12 @@ export default function Home() {
 
 
         <div className="absolute left-0 bottom-0 w-full flex flex-row justify-center ">
-          {/* 3 pixel aggiunti visto che Figma non conta i bordi nella width e height */}
-          <div className="absolute bottom-0 left-[174px] w-[361px] h-[46px] ">
-            <div className="absolute left-0 top-0 w-full h-full">
-              <Image src={"/bottomLeftDistanceBackground.svg"} fill={true} alt="Background"></Image>
+          <div className="absolute bottom-0 left-[171px] w-[359px] h-[43px] ">
+            <div className="absolute left-0 top-0 w-full h-full ">
+              <div className="absolute w-full h-full bottom-elements-border"></div>
+              {/*<Image src={"/bottomLeftDistanceBackground.svg"} fill={true} alt="Background"></Image>*/}
             </div>
-            {/* left messo a 5.5px visto che Figma non conta i bordi nella width, viene quindi 4px + 1.5px = 5.5px */}
-            <div className="absolute left-[5.5px] bottom-[4px] bg-[#FFFFFF0D] w-[245px] h-[35px] rounded-tl-[20px] rounded-b-[4px] rounded-tr-[4px]">
+            <div className="absolute left-[4px] bottom-[4px] bg-[#FFFFFF0D] w-[245px] h-[35px] rounded-tl-[20px] rounded-b-[4px] rounded-tr-[4px]">
               <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFF80] bottom-[11px] left-[16px]">ALTITUDE</p>
               <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFFBF] bottom-[11px] right-[44px]">783 <span className="font-normal">m</span></p>
             </div>
@@ -444,12 +444,12 @@ export default function Home() {
           <p className="text-[24px] leading-[0.77] font-medium text-[#FFFFFF] opacity-25 mb-[10px]">105.302 <span className="font-normal">km</span></p>
         
           {/* 3 pixel aggiunti visto che Figma non conta i bordi nella width e height */}
-          <div className="absolute bottom-0 right-[174px] w-[361px] h-[46px] ">
+          <div className="absolute bottom-0 right-[171px] w-[359px] h-[43px] ">
             <div className="absolute left-0 top-0 w-full h-full">
-              <Image src={"/bottomLeftDistanceBackground.svg"} fill={true} alt="Background"></Image>
+              <div className="absolute w-full h-full bottom-elements-border"></div>
+              {/*<Image src={"/bottomLeftDistanceBackground.svg"} fill={true} alt="Background"></Image>*/}
             </div>
-            {/* left messo a 5.5px visto che Figma non conta i bordi nella width, viene quindi 4px + 1.5px = 5.5px */}
-            <div className="absolute left-[5.5px] bottom-[4px] bg-[#FFFFFF0D] w-[245px] h-[35px] rounded-tl-[20px] rounded-b-[4px] rounded-tr-[4px]">
+            <div className="absolute left-[4px] bottom-[4px] bg-[#FFFFFF0D] w-[245px] h-[35px] rounded-tl-[20px] rounded-b-[4px] rounded-tr-[4px]">
               <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFF80] bottom-[11px] left-[16px] whitespace-nowrap">PW LOAD</p>
               <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFFBF] bottom-[11px] right-[44px] whitespace-nowrap">72 %</p>
             </div>
