@@ -149,6 +149,13 @@ export default function Home() {
         {opacity: 0, width: 0, duration: 1, ease: "power1.out" },      
       );    
     }
+
+    if(petrolLineRef.current != null){
+      gsap.from(
+        petrolLineRef.current,
+        {opacity: 0, width: 0, duration: 1, ease: "power1.out" },      
+      );    
+    }
   },[]);
 
   return (
@@ -184,17 +191,18 @@ export default function Home() {
           
           {/* Fuel indicator */}
           <div className="absolute top-0 right-[127px] w-[455px]">
-            <div className="relative w-full h-[10px] bg-[#FFFFFF0D] flex flex-row overflow-hidden rounded-b-[24px]">
-              <div className="rounded-bl-[24px] absolute left-0 h-full w-[332px] bg-[linear-gradient(to_right,_#4B4F4F,_#8E9191)] "/>
+            <div className="relative w-full h-[10px] bg-[#FFFFFF0D] flex flex-row rounded-b-[24px]">
+              <div ref={petrolLineRef} className="rounded-bl-[24px] absolute left-0 h-full w-[332px] bg-[linear-gradient(to_right,_#4B4F4F,_#8E9191)] ">
+                <div className="absolute -bottom-[30px] -right-[57px] w-[113px] flex flex-row gap-[8px] ">
+                  <Image src={"/petrol.svg"} alt={"Petrolò"} width={28} height={18}/>
+                  <p className="font-medium text-[#FFFFFFBF] leading-[0.77] text-[24px] whitespace-nowrap">513 km</p>
+                </div>
+              </div>
               {/* Linear gradient custom (Vedere commento in "Oil Temperature indicator") ^ */}
               {/*<div className="rounded-bl-[24px] absolute left-0 h-full w-[332px] bg-[linear-gradient(to_right,_#406E6D00_0%,_#7BD4D3_75%)] backdrop-blur-[40px] opacity-50"/>*/}
             </div>
             <div className="relative mt-[12px] w-full flex flex-row">
               <p className="font-medium text-[#FFFFFF40] leading-[0.77] text-[24px] ">E</p>
-              <div className="relative ml-[261px] w-[113px] flex flex-row gap-[8px] ">
-                <Image src={"/petrol.svg"} alt={"Petrolò"} width={28} height={18}/>
-                <p className="font-medium text-[#FFFFFFBF] leading-[0.77] text-[24px] whitespace-nowrap">513 km</p>
-              </div>
               <p className="font-medium absolute right-0 text-[#FFFFFF40] leading-[0.77] text-[24px] wrap-break-word">F</p>
             </div>
           </div>
