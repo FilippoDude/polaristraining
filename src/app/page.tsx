@@ -299,15 +299,15 @@ export default function Home() {
               <div className="absolute w-[280px] h-[280px] border-[2px] border-[#FFFFFF20] p-4 rounded-[62px]"/>
               <div className="w-[626.5px] h-[626.5px] absolute border-[1.5px] border-[#FFFFFF40] rounded-[216.5px]"></div>
             </div>
-            <div className="absolute w-[628px] h-[628px] z-20 test_5"></div>
+            <div className="absolute w-[628px] h-[628px] z-20 indicators_border_fade"></div>
 
             <div ref={leftIndicatorIntersectionsRef} className="absolute w-full h-full flex items-center justify-center">
               <div className="absolute w-[626px] h-[626px] circle-reveal">
-                <div className="absolute test_2 w-full h-full"></div>
+                <div className="absolute outer_intersection w-full h-full"></div>
               </div>
               <div className="absolute w-[456px] h-[456px] circle-reveal ">
-                <div className="absolute test_3 w-full h-full"></div>
-                <div className="absolute test_4 w-full h-full"></div>
+                <div className="absolute left_inner_intersection w-full h-full"></div>
+                <div className="absolute left_correction_inner_intersection w-full h-full"></div>
               </div>
             </div>
             
@@ -454,15 +454,15 @@ export default function Home() {
               <div className="absolute bottom-[1px] bg-[linear-gradient(to_top,_#3F4343,_#00000000)] h-48 w-[1.6px]"/>
             </div>
 
-            <div className="absolute w-[628px] h-[628px] z-20 test_5"></div>
+            <div className="absolute w-[628px] h-[628px] z-20 indicators_border_fade"></div>
 
             <div ref={rightIndicatorIntersectionsRef} className="absolute w-full h-full flex items-center justify-center">
               <div className="absolute w-[626px] h-[626px] circle-reveal">
-                <div className="absolute test_2 w-full h-full"></div>
+                <div className="absolute outer_intersection w-full h-full"></div>
               </div>
               <div className="absolute w-[456px] h-[456px] circle-reveal ">
-                <div className="absolute test_6 w-full h-full"></div>
-                <div className="absolute test_7 w-full h-full"></div>
+                <div className="absolute right_inner_intersection w-full h-full"></div>
+                <div className="absolute right_correction_inner_intersection w-full h-full"></div>
               </div>
             </div>
 

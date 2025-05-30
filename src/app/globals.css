@@ -44,7 +44,7 @@ body {
   border-color: #7BD4D3;
   border-radius: 100px; 
 }
-.test_2{
+.outer_intersection{
   padding: 85px 85px;
   border-radius: 216.5px;
   background: radial-gradient(circle at center, #38605F 0%, #406E6D 100%);
@@ -62,7 +62,7 @@ body {
 }
 
 
-.test_3{
+.left_inner_intersection{
   padding: 88px 88px;
   border-radius: 150px;
   background: radial-gradient(circle at center, #172323 0%, #1C2C2C 100%);
@@ -79,7 +79,7 @@ body {
 
 }
 
-.test_4{
+.left_correction_inner_intersection{
   padding: 10px 10px;
   border-radius: 130px;
   background: radial-gradient(circle at center, #172323 0%, #1C2C2C 100%);
@@ -96,7 +96,7 @@ body {
 
 }
 
-.test_5{
+.indicators_border_fade{
   padding: 25px 25px;
   opacity: 0.025;
   border-radius: 216.5px;
@@ -115,7 +115,7 @@ body {
 }
 
 
-.test_6{
+.right_inner_intersection{
   padding: 48px 48px;
   border-radius: 138px;
   background: radial-gradient(circle at center, #172323 0%, #1C2C2C 100%);
@@ -132,7 +132,7 @@ body {
 
 }
 
-.test_7{
+.right_correction_inner_intersection{
   padding: 10px 10px;
   border-radius: 130px;
   background: radial-gradient(circle at center, #172323 0%, #1C2C2C 100%);
