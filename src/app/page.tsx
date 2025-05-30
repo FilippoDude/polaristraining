@@ -41,7 +41,9 @@ export default function Home() {
   const timeProgressRef = useRef<HTMLDivElement | null>(null);
   const timeProgressContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const titleRef = useRef<HTMLHeadingElement | null>(null);
+
+  const leftIndicatorIntersectionsRef = useRef<HTMLDivElement | null>(null);
+  const rightIndicatorIntersectionsRef = useRef<HTMLDivElement | null>(null);
 
   const oilLineRef = useRef<HTMLDivElement | null>(null);
   const petrolLineRef = useRef<HTMLDivElement | null>(null);
@@ -82,6 +84,7 @@ export default function Home() {
     }
 
 
+
     if(subtitlePlayerRef.current != null){
       let split = new SplitText(subtitlePlayerRef.current, {
           type: "words, chars",
@@ -95,6 +98,27 @@ export default function Home() {
         autoAlpha: 0,  
         stagger: 0.05,  
       });
+    }
+
+    if(rightIndicatorIntersectionsRef.current != null){
+      gsap.fromTo(
+        rightIndicatorIntersectionsRef.current,
+        { maskImage: "conic-gradient(red 0deg, transparent 0deg, transparent 360deg)"},
+        { maskImage: "conic-gradient(red 90deg, transparent 0deg, transparent 360deg)", duration: 2.5, ease: "power1.out"}
+      );   
+    }
+
+    if(leftIndicatorIntersectionsRef.current != null){
+      gsap.fromTo(
+        leftIndicatorIntersectionsRef.current,
+        { maskImage: "conic-gradient(red 0deg, transparent 0deg, transparent 360deg)"},
+        { maskImage: "conic-gradient(red 45deg, transparent 0deg, transparent 360deg)", duration: 0.5, ease: "power1.out"}
+      );
+      gsap.fromTo(
+        leftIndicatorIntersectionsRef.current,
+        { maskImage: "conic-gradient(red 45deg, transparent 0deg, transparent 360deg)"},
+        { maskImage: "conic-gradient(red 90deg, transparent 0deg, transparent 360deg)", delay: 0.5, duration: 0.5, ease: "power1.out"}
+      );      
     }
 
     if(speedNumberRef.current != null, gearNumberRef.current != null){
@@ -277,12 +301,14 @@ export default function Home() {
             </div>
             <div className="absolute w-[628px] h-[628px] z-20 test_5"></div>
 
-            <div className="absolute w-[626px] h-[626px] circle-reveal">
-              <div className="absolute test_2 w-full h-full"></div>
-            </div>
-            <div className="absolute w-[456px] h-[456px] circle-reveal ">
-              <div className="absolute test_3 w-full h-full"></div>
-              <div className="absolute test_4 w-full h-full"></div>
+            <div ref={leftIndicatorIntersectionsRef} className="absolute w-full h-full flex items-center justify-center">
+              <div className="absolute w-[626px] h-[626px] circle-reveal">
+                <div className="absolute test_2 w-full h-full"></div>
+              </div>
+              <div className="absolute w-[456px] h-[456px] circle-reveal ">
+                <div className="absolute test_3 w-full h-full"></div>
+                <div className="absolute test_4 w-full h-full"></div>
+              </div>
             </div>
             
             <div className="absolute w-full h-full">
@@ -430,12 +456,14 @@ export default function Home() {
 
             <div className="absolute w-[628px] h-[628px] z-20 test_5"></div>
 
-            <div className="absolute w-[626px] h-[626px] circle-reveal">
-              <div className="absolute test_2 w-full h-full"></div>
-            </div>
-            <div className="absolute w-[456px] h-[456px] circle-reveal ">
-              <div className="absolute test_6 w-full h-full"></div>
-              <div className="absolute test_7 w-full h-full"></div>
+            <div ref={rightIndicatorIntersectionsRef} className="absolute w-full h-full flex items-center justify-center">
+              <div className="absolute w-[626px] h-[626px] circle-reveal">
+                <div className="absolute test_2 w-full h-full"></div>
+              </div>
+              <div className="absolute w-[456px] h-[456px] circle-reveal ">
+                <div className="absolute test_6 w-full h-full"></div>
+                <div className="absolute test_7 w-full h-full"></div>
+              </div>
             </div>
 
             {/*
