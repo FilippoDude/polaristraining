@@ -219,6 +219,7 @@ export default function Home() {
                   <p className=" text-[#FFFFFFBF] leading-[0.77] text-[24px] font-medium">41°</p>
                 </div>
               </div>
+
               {/* Provato a replicare l'effetto su figma usando la dev mode ma per quanto avessi provato non funziona, ho fatto un linear gradient direttamente ^ */}
               {/*<div className="rounded-bl-[24px] absolute top-0 left-0 h-full w-[160px] bg-[linear-gradient(90deg,_rgba(64,110,109,0)_70.74%,_rgba(123,212,211,0.75)_100%)] "/>*/}
 
@@ -245,8 +246,10 @@ export default function Home() {
                   <p className="font-medium text-[#FFFFFFBF] leading-[0.77] text-[24px] whitespace-nowrap">513 km</p>
                 </div>
               </div>
+
               {/* Linear gradient custom (Vedere commento in "Oil Temperature indicator") ^ */}
               {/*<div className="rounded-bl-[24px] absolute left-0 h-full w-[332px] bg-[linear-gradient(to_right,_#406E6D00_0%,_#7BD4D3_75%)] backdrop-blur-[40px] opacity-50"/>*/}
+            
             </div>
             <div className="relative mt-[12px] w-full flex flex-row">
               <p className="font-medium text-[#FFFFFF40] leading-[0.77] text-[24px] ">E</p>
@@ -266,30 +269,13 @@ export default function Home() {
           {/* Left eco indicator */}
           <div ref={leftIndicatorRef} className="absolute left-0 w-[708px] h-[628px] flex items-center justify-center">
             <div className="absolute w-[625px] h-[625px] -rotate-90 bg-gradient-to-b from-emerald-300/5 to-emerald-300/0 rounded-[216.5px]"></div>
-            {/*<div className="absolute min-w-[708px] w-[708px] min-h-[628px] h-[628px] z-10"><Image src={"/leftIndicatorLines.svg"} alt={"Left indicator lines"} fill={true}/> </div>*/}
             
             <div className="absolute w-full h-full flex items-center justify-center">
               <div className="absolute w-[456px] h-[456px] border-[2px] border-dashed border-[#FFFFFF20] p-4 rounded-[130px]"/>
               <div className="absolute w-[280px] h-[280px] border-[2px] border-[#FFFFFF20] p-4 rounded-[62px]"/>
               <div className="w-[626.5px] h-[626.5px] absolute border-[1.5px] border-[#FFFFFF40] rounded-[216.5px]"></div>
             </div>
-            {/*<div className="absolute min-w-[628px] w-[628px] min-h-[628px] h-[628px] z-20 flex items-center justify-center overflow-hidden"><Image src={"/leftIndicatorBorderFade.svg"} alt={"Left indicator border fade"} fill={true}/></div>*/}
             <div className="absolute w-[628px] h-[628px] z-20 test_5"></div>
-
-            {/*Qui la width e height è di un pixel più alta a causa di un piccolo distacco che ci sarebbe stato tra il bordo di confine e le linee ad X */}
-            {/*<div className="absolute min-w-[626px] w-[626px] min-h-[626px] h-[626px] z-20 flex items-center justify-center overflow-hidden">
-              <div className="absolute w-full h-full"><Image src={"/leftIndicatorOuterXLines.svg"} alt={"Left indicator outer X lines"} fill={true}/></div>
-            </div>*/}
-          
-            {/*<div className="absolute w-full h-full flex justify-center items-center circle-reveal">
-              <div className="absolute ml-[314px] top-0 w-[314px] h-[314px]"> {/* Margin left the size of the intersection *}
-                <Image src={"/leftIndicatorOuterIntersection.svg"} alt={"Left indicator outer intersection"} fill={true}/>
-              </div>
-              <div className="absolute ml-[228px] mb-[228px] w-[228px] h-[228px]"> {/* Margin bottom and left half the size of the intersection *}
-                <Image src={"/leftIndicatorInnerIntersection.svg"} alt={"Left indicator inner intersection"} fill={true}/>
-              </div>
-              <div className="absolute w-full h-full"></div>
-            </div>*/}
 
             <div className="absolute w-[626px] h-[626px] circle-reveal">
               <div className="absolute test_2 w-full h-full"></div>
@@ -329,8 +315,6 @@ export default function Home() {
                 <div className="absolute opacity-50 text-center justify-start text-white text-[156px] font-light leading-[0.77] tracking-[6.24px] blur-[25px] font-display-variable text-outline">2</div>
                 <p className="absolute -bottom-[46px] h-[18px] text-center justify-start text-cyan-100 text-2xl font-medium leading-[0.77]">ECO</p>
               </div>
-              
-
             </div>
 
             {/* Dashes (bottom negativo per non alzare l'elemento, calcolato aggiungendo alla height di un dash la height del margine: 12.5px + 4px = 16.5px) */}
@@ -349,15 +333,16 @@ export default function Home() {
           {/* Center music player */}
           <div className="relative w-[452px] h-[529px] flex flex-col items-center">
             
+            {/* Bluetooth device button */}
             <div ref={devicePlayerRef} className="relative w-[134px] h-[31px] flex items-center justify-center gap-[10px] overflow-hidden bg-[linear-gradient(to_bottom,_#ffffff0d,_#ffffff03)] rounded-[9px]">
-                {/*<Image src={"/bluetoothDeviceButton.svg"} fill={true} alt="bluetooth button"></Image>*/}
                 <div className="absolute w-full h-full device-player-border "/>
                 {/*2 pixel più grande visto che Figma non conta i bordi nella width e height */}
                 <Image src={"/bluetoothLogo.svg"} width={9} height={13} alt="bluetooth button"></Image>
                 <p className="text-[#FFFFFFBF] leading-[0.77] text-[14px] font-medium device-player-text-outline whitespace-nowrap">iPhone 16 Pro</p>
             </div>
-            <div className="mt-[24px] relative h-[244px] w-full flex justify-center items-center">
-              
+
+            {/* Music covers */}
+            <div className="mt-[24px] relative h-[244px] w-full flex justify-center items-center">  
               <div ref={leftPlayerImageRef} className="opacity-50 rounded-[36px] absolute w-[194px] h-[194px] bg-green-400 -rotate-12 left-3 overflow-hidden shadow-[0_24px_50px_0_rgba(0,0,0,0.3)] mix-blend-luminosity">
                 <Image src={"/duranImage.jpg"} fill={true} alt="Duran"></Image>
                 <div className="z-10 absolute inset-0 bg-gray-700 opacity-50 pointer-events-none" />
@@ -374,8 +359,9 @@ export default function Home() {
                 <Image src={"/dreamlandImage.jpg"} fill={true} alt="Dreamland"></Image>
                 <div className="z-10 absolute inset-0 bg-gray-700 opacity-50 pointer-events-none" />
               </div>
-
             </div>
+
+            {/* Music progress */}
             <div className="relative mt-[25px] w-[290px]">
               <div className="relative min-h-[25px] h-[25px] w-full ">
                 <div className="absolute top-0 min-h-[11px] h-[11px] w-full overflow-hidden">
@@ -390,6 +376,8 @@ export default function Home() {
               <p ref={titlePlayerRef} className="text-center mt-[32px] h-[20px] text-[26px] leading-[0.77] text-[#FFFFFF] font-medium">Smells like Teen Spirit</p>
               <p ref={subtitlePlayerRef} className="text-center mt-[18px] h-[14px] text-[18px] leading-[0.77] text-[#FFFFFF] opacity-50 font-medium">Nirvana</p>
             </div>
+            
+            {/* Navigation */}
             <nav className="h-[36px] w-[296px] mt-[61px] flex flex-row gap-[24px] items-center">
               <div className="relative w-[28px] h-[28px]">
                 <Image src={"/navigatorUp.svg"} fill={true} alt="Navigator up"></Image>
@@ -420,8 +408,6 @@ export default function Home() {
           {/* Right speed indicator */}
           <div ref={rightIndicatorRef} className="absolute right-0 w-[708px] h-[628px] flex items-center justify-center">
             <div className="absolute w-[625px] h-[625px] -rotate-90 bg-gradient-to-b from-emerald-300/5 to-emerald-300/0 rounded-[216.5px]"></div>
-            {/*<div className="absolute min-w-[708px] w-[708px] min-h-[628px] h-[628px] z-10"><Image src={"/rightIndicatorLines.svg"} alt={"Left indicator lines"} fill={true}/></div>*/}
-            {/*<div className="absolute min-w-[628px] w-[628px] min-h-[628px] h-[628px] z-20 flex items-center justify-center overflow-hidden"><Image src={"/leftIndicatorBorderFade.svg"} alt={"Left indicator border fade"} fill={true}/></div>*/}
 
             {/*Qui la width e height è di un pixel più alta a causa di un piccolo distacco che ci sarebbe stato tra il bordo di confine e le linee ad X */}
             <div className="absolute min-w-[626px] w-[626px] min-h-[626px] h-[626px] z-20 flex items-center justify-center overflow-hidden">
@@ -496,12 +482,13 @@ export default function Home() {
           </div>
         </div>
 
-
+        {/* Bottom elements*/}
         <div className="absolute left-0 bottom-0 w-full flex flex-row justify-center ">
+
+          {/* Altitude */}
           <div ref={altitudeContainerRef} className="absolute bottom-0 left-[171px] w-[359px] h-[43px] ">
             <div className="absolute left-0 top-0 w-full h-full ">
               <div className="absolute w-full h-full bottom-elements-border"></div>
-              {/*<Image src={"/bottomLeftDistanceBackground.svg"} fill={true} alt="Background"></Image>*/}
             </div>
             <div className="absolute left-[4px] bottom-[4px] bg-[#FFFFFF0D] w-[245px] h-[35px] rounded-tl-[20px] rounded-b-[4px] rounded-tr-[4px]">
               <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFF80] bottom-[11px] left-[16px]">ALTITUDE</p>
@@ -513,13 +500,14 @@ export default function Home() {
             </div>
 
           </div>
-
+            
+          {/* Km */}
           <p className="text-[24px] leading-[0.77] font-medium text-[#FFFFFF] opacity-25 mb-[10px]">105.302 <span className="font-normal">km</span></p>
-        
+              
+          {/* Load */}
           <div ref={pwloadContainerRef} className="absolute bottom-0 right-[171px] w-[359px] h-[43px] ">
             <div className="absolute left-0 top-0 w-full h-full">
               <div className="absolute w-full h-full bottom-elements-border"></div>
-              {/*<Image src={"/bottomLeftDistanceBackground.svg"} fill={true} alt="Background"></Image>*/}
             </div>
             <div className="absolute left-[4px] bottom-[4px] bg-[#FFFFFF0D] w-[245px] h-[35px] rounded-tl-[20px] rounded-b-[4px] rounded-tr-[4px]">
               <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFF80] bottom-[11px] left-[16px] whitespace-nowrap">PW LOAD</p>
