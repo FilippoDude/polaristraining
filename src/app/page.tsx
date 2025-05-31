@@ -8,17 +8,7 @@ import { SlowMo } from "gsap/EasePack";
 import Image from "next/image";
 gsap.registerPlugin(SlowMo,CustomEase);
 gsap.registerPlugin(SplitText)
-/*
-        <div className="absolute w-full h-full filter brightness-50">
-          <Image alt="Background image" src={"/homeBackground.png"} fill={true}></Image>
-        </div>
-        <nav className="absolute top-0 left-0 h-16 w-full bg-[#141415d0] flex items-center justify-center">
-          <div className="absolute left-10 w-32 h-6"><Image alt="Logo" src={"/logo.png"} fill={true}></Image></div>
-          <button className="absolute right-10 text-xl font-sans text-[#D9A166] font-bold">CONTATTACI</button>
-          <div className="flex flex-row gap-6">
-          </div>
-        </nav>
-*/
+
 export default function Home() {
   const speedNumberRef = useRef<HTMLParagraphElement | null>(null);
   const gearNumberRef = useRef<HTMLParagraphElement | null>(null);
@@ -41,7 +31,9 @@ export default function Home() {
   const timeProgressRef = useRef<HTMLDivElement | null>(null);
   const timeProgressContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const titleRef = useRef<HTMLHeadingElement | null>(null);
+
+  const leftIndicatorIntersectionsRef = useRef<HTMLDivElement | null>(null);
+  const rightIndicatorIntersectionsRef = useRef<HTMLDivElement | null>(null);
 
   const oilLineRef = useRef<HTMLDivElement | null>(null);
   const petrolLineRef = useRef<HTMLDivElement | null>(null);
@@ -82,6 +74,7 @@ export default function Home() {
     }
 
 
+
     if(subtitlePlayerRef.current != null){
       let split = new SplitText(subtitlePlayerRef.current, {
           type: "words, chars",
@@ -95,6 +88,27 @@ export default function Home() {
         autoAlpha: 0,  
         stagger: 0.05,  
       });
+    }
+
+    if(rightIndicatorIntersectionsRef.current != null){
+      gsap.fromTo(
+        rightIndicatorIntersectionsRef.current,
+        { maskImage: "conic-gradient(red 0deg, transparent 0deg, transparent 360deg)"},
+        { maskImage: "conic-gradient(red 90deg, transparent 0deg, transparent 360deg)", duration: 2.5, ease: "power1.out"}
+      );   
+    }
+
+    if(leftIndicatorIntersectionsRef.current != null){
+      gsap.fromTo(
+        leftIndicatorIntersectionsRef.current,
+        { maskImage: "conic-gradient(red 0deg, transparent 0deg, transparent 360deg)"},
+        { maskImage: "conic-gradient(red 45deg, transparent 0deg, transparent 360deg)", duration: 0.5, ease: "power1.out"}
+      );
+      gsap.fromTo(
+        leftIndicatorIntersectionsRef.current,
+        { maskImage: "conic-gradient(red 45deg, transparent 0deg, transparent 360deg)"},
+        { maskImage: "conic-gradient(red 90deg, transparent 0deg, transparent 360deg)", delay: 0.5, duration: 0.5, ease: "power1.out"}
+      );      
     }
 
     if(speedNumberRef.current != null, gearNumberRef.current != null){
@@ -230,7 +244,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div ref={destinationContainerRef} className="relative mt-[10.5px] flex flex-row gap-[12px] overflow-hidden">
+          <div ref={destinationContainerRef} className="relative mt-[10.5px] flex flex-row gap-[12px]">
             <div ref={destinationIconRef} className="">
               <Image src={"/navigator.svg"} alt={"Navigator"} width={19} height={19}/>
             </div>
@@ -264,7 +278,7 @@ export default function Home() {
           {/* Blurred circles */}
           <div className="absolute w-[1000px] h-[1000px] bg-[#7BD4D3] -left-[545px] blur-[250px] opacity-5 -rotate-180"/>
           <div className="absolute w-[1000px] h-[1000px] bg-[#7BD4D3] -right-[545px] blur-[250px] opacity-5 rotate-180"/>
-          <div className="absolute z-10 w-[912px] h-[912px] bg-[#7BD4D3] -bottom-[674px] blur-[500px] opacity-10 -rotate-180"/>
+          <div className="absolute z-10 w-[912px] h-[912px] bg-[#7BD4D3] -bottom-[674px] blur-[250px] opacity-10 -rotate-180"/>
           
           {/* Left eco indicator */}
           <div ref={leftIndicatorRef} className="absolute left-0 w-[708px] h-[628px] flex items-center justify-center">
@@ -275,14 +289,16 @@ export default function Home() {
               <div className="absolute w-[280px] h-[280px] border-[2px] border-[#FFFFFF20] p-4 rounded-[62px]"/>
               <div className="w-[626.5px] h-[626.5px] absolute border-[1.5px] border-[#FFFFFF40] rounded-[216.5px]"></div>
             </div>
-            <div className="absolute w-[628px] h-[628px] z-20 test_5"></div>
+            <div className="absolute w-[628px] h-[628px] z-20 indicators_border_fade"></div>
 
-            <div className="absolute w-[626px] h-[626px] circle-reveal">
-              <div className="absolute test_2 w-full h-full"></div>
-            </div>
-            <div className="absolute w-[456px] h-[456px] circle-reveal ">
-              <div className="absolute test_3 w-full h-full"></div>
-              <div className="absolute test_4 w-full h-full"></div>
+            <div ref={leftIndicatorIntersectionsRef} className="absolute w-full h-full flex items-center justify-center">
+              <div className="absolute w-[626px] h-[626px] circle-reveal">
+                <div className="absolute outer_intersection w-full h-full"></div>
+              </div>
+              <div className="absolute w-[456px] h-[456px] circle-reveal ">
+                <div className="absolute left_inner_intersection w-full h-full"></div>
+                <div className="absolute left_correction_inner_intersection w-full h-full"></div>
+              </div>
             </div>
             
             <div className="absolute w-full h-full">
@@ -317,8 +333,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Dashes (bottom negativo per non alzare l'elemento, calcolato aggiungendo alla height di un dash la height del margine: 12.5px + 4px = 16.5px) */}
-            <div className="absolute -bottom-[16.5px] h-[4px] flex flex-row gap-[6px]">
+            {/* Dashes (bottom negativo per non alzare l'elemento, calcolato aggiungendo alla height di un dash la height del margine: 11px + 4px = 16.5px) */}
+            <div className="absolute -bottom-[15px] h-[4px] flex flex-row gap-[6px]">
               <div className="relative w-[18px] h-full filter ">
                 <div className="absolute w-full h-full bg-[#FFFFFFBF] rounded-[10900px]"></div>
                 <div className="absolute w-full h-full bg-[#FFFFFFBF] blur-[4px] rounded-[10900px]"></div>
@@ -336,6 +352,7 @@ export default function Home() {
             {/* Bluetooth device button */}
             <div ref={devicePlayerRef} className="relative w-[134px] h-[31px] flex items-center justify-center gap-[10px] overflow-hidden bg-[linear-gradient(to_bottom,_#ffffff0d,_#ffffff03)] rounded-[9px]">
                 <div className="absolute w-full h-full device-player-border "/>
+
                 {/*2 pixel più grande visto che Figma non conta i bordi nella width e height */}
                 <Image src={"/bluetoothLogo.svg"} width={9} height={13} alt="bluetooth button"></Image>
                 <p className="text-[#FFFFFFBF] leading-[0.77] text-[14px] font-medium device-player-text-outline whitespace-nowrap">iPhone 16 Pro</p>
@@ -343,7 +360,7 @@ export default function Home() {
 
             {/* Music covers */}
             <div className="mt-[24px] relative h-[244px] w-full flex justify-center items-center">  
-              <div ref={leftPlayerImageRef} className="opacity-50 rounded-[36px] absolute w-[194px] h-[194px] bg-green-400 -rotate-12 left-3 overflow-hidden shadow-[0_24px_50px_0_rgba(0,0,0,0.3)] mix-blend-luminosity">
+              <div ref={leftPlayerImageRef} className="opacity-50 rounded-[36px] absolute w-[194px] h-[194px] bg-green-400 -rotate-12 left-3 border-[2px] border-solid border-[rgba(255,255,255,0.05)] overflow-hidden shadow-[0_24px_50px_0_rgba(0,0,0,0.3)] mix-blend-luminosity">
                 <Image src={"/duranImage.jpg"} fill={true} alt="Duran"></Image>
                 <div className="z-10 absolute inset-0 bg-gray-700 opacity-50 pointer-events-none" />
               </div>
@@ -355,7 +372,7 @@ export default function Home() {
                 <div className="absolute z-20 w-full h-full rounded-[36px] border-[rgba(255,255,255,0.05)] border-[2px]"></div>
               </div>
 
-              <div ref={rightPlayerImageRef}  className="opacity-50 rounded-[36px] absolute w-[194px] h-[194px] bg-blue-500 rotate-12 right-3 overflow-hidden shadow-[0_24px_50px_0_rgba(0,0,0,0.3)] mix-blend-luminosity">
+              <div ref={rightPlayerImageRef}  className="opacity-50 rounded-[36px] absolute w-[194px] h-[194px] bg-blue-500 rotate-12 right-3 border-[2px] border-solid border-[rgba(255,255,255,0.05)] overflow-hidden shadow-[0_24px_50px_0_rgba(0,0,0,0.3)] mix-blend-luminosity">
                 <Image src={"/dreamlandImage.jpg"} fill={true} alt="Dreamland"></Image>
                 <div className="z-10 absolute inset-0 bg-gray-700 opacity-50 pointer-events-none" />
               </div>
@@ -428,26 +445,17 @@ export default function Home() {
               <div className="absolute bottom-[1px] bg-[linear-gradient(to_top,_#3F4343,_#00000000)] h-48 w-[1.6px]"/>
             </div>
 
-            <div className="absolute w-[628px] h-[628px] z-20 test_5"></div>
+            <div className="absolute w-[628px] h-[628px] z-20 indicators_border_fade"></div>
 
-            <div className="absolute w-[626px] h-[626px] circle-reveal">
-              <div className="absolute test_2 w-full h-full"></div>
+            <div ref={rightIndicatorIntersectionsRef} className="absolute w-full h-full flex items-center justify-center">
+              <div className="absolute w-[626px] h-[626px] circle-reveal">
+                <div className="absolute outer_intersection w-full h-full"></div>
+              </div>
+              <div className="absolute w-[456px] h-[456px] circle-reveal ">
+                <div className="absolute right_inner_intersection w-full h-full"></div>
+                <div className="absolute right_correction_inner_intersection w-full h-full"></div>
+              </div>
             </div>
-            <div className="absolute w-[456px] h-[456px] circle-reveal ">
-              <div className="absolute test_6 w-full h-full"></div>
-              <div className="absolute test_7 w-full h-full"></div>
-            </div>
-
-            {/*
-              to do
-            <div className="absolute w-full h-full">
-              <div className="absolute left-[102.5px] top-[72px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] rotate-45"/>
-              <div className="absolute left-[43.8px] top-[189px] bg-[#FFFFFF] opacity-20 w-[24px] h-[1.5px] rotate-22"/>
-              <div className="absolute left-[102.5px] bottom-[72px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] -rotate-45"/>
-              <div className="absolute right-[101.5px] top-[72.5px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] -rotate-45"/>
-              <div className="absolute right-[101.5px] bottom-[72.5px] bg-[#FFFFFF] opacity-20 w-[22px] h-[1.5px] rotate-45"/>
-              
-            </div>*/}
 
 
             <div className="absolute w-[628px] h-[628px]">
@@ -468,8 +476,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Dashes (bottom negativo per non alzare l'elemento, calcolato aggiungendo alla height di un dash la height del margine: 12.5px + 4px = 16.5px) */}
-            <div className="absolute -bottom-[16.5px] h-[4px] flex flex-row gap-[6px]">
+            {/* Dashes (bottom negativo per non alzare l'elemento, calcolato aggiungendo alla height di un dash la height del margine: 11px + 4px = 16.5px) */}
+            <div className="absolute -bottom-[15px] h-[4px] flex flex-row gap-[6px]">
               <div className="relative w-[18px] h-full filter ">
                 <div className="absolute w-full h-full bg-[#FFFFFFBF] rounded-[10900px]"></div>
                 <div className="absolute w-full h-full bg-[#FFFFFFBF] blur-[4px] rounded-[10900px]"></div>
@@ -491,7 +499,7 @@ export default function Home() {
               <div className="absolute w-full h-full bottom-elements-border"></div>
             </div>
             <div className="absolute left-[4px] bottom-[4px] bg-[#FFFFFF0D] w-[245px] h-[35px] rounded-tl-[20px] rounded-b-[4px] rounded-tr-[4px]">
-              <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFF80] bottom-[11px] left-[16px]">ALTITUDE</p>
+              <p className="absolute text-[18px] leading-[0.77] tracking-[0.36px] font-medium text-[#FFFFFF80] bottom-[11px] left-[16px]">ALTITUDE</p>
               <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFFBF] bottom-[11px] right-[44px]">783 <span className="font-normal">m</span></p>
             </div>
 
@@ -510,7 +518,7 @@ export default function Home() {
               <div className="absolute w-full h-full bottom-elements-border"></div>
             </div>
             <div className="absolute left-[4px] bottom-[4px] bg-[#FFFFFF0D] w-[245px] h-[35px] rounded-tl-[20px] rounded-b-[4px] rounded-tr-[4px]">
-              <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFF80] bottom-[11px] left-[16px] whitespace-nowrap">PW LOAD</p>
+              <p className="absolute text-[18px] leading-[0.77] font-medium tracking-[0.36px] text-[#FFFFFF80] bottom-[11px] left-[16px] whitespace-nowrap">PW LOAD</p>
               <p className="absolute text-[18px] leading-[0.77] font-medium text-[#FFFFFFBF] bottom-[11px] right-[44px] whitespace-nowrap">72 <span className="font-normal">%</span></p>
             </div>
 
