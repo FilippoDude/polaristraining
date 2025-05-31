@@ -276,13 +276,13 @@ export default function Home() {
         <div className="relative flex flex-row w-full h-full items-center justify-center">
 
           {/* Blurred circles */}
-          <div className="absolute w-[1000px] h-[1000px] bg-[#7BD4D3] -left-[545px] blur-[250px] opacity-5 -rotate-180"/>
-          <div className="absolute w-[1000px] h-[1000px] bg-[#7BD4D3] -right-[545px] blur-[250px] opacity-5 rotate-180"/>
-          <div className="absolute z-10 w-[912px] h-[912px] bg-[#7BD4D3] -bottom-[674px] blur-[250px] opacity-10 -rotate-180"/>
+          <div className="z-20 absolute w-[1000px] h-[1000px] bg-[#7BD4D3] -left-[545px] blur-[250px] opacity-5 -rotate-180"/>
+          <div className="z-20 absolute w-[1000px] h-[1000px] bg-[#7BD4D3] -right-[545px] blur-[250px] opacity-5 rotate-180"/>
+          <div className="absolute z-20 w-[912px] h-[912px] bg-[#7BD4D3] -bottom-[674px] blur-[250px] opacity-10 -rotate-180"/>
           
           {/* Left eco indicator */}
           <div ref={leftIndicatorRef} className="absolute left-0 w-[708px] h-[628px] flex items-center justify-center">
-            <div className="absolute w-[625px] h-[625px] -rotate-90 bg-gradient-to-b from-emerald-300/5 to-emerald-300/0 rounded-[216.5px]"></div>
+            <div className="z-30 absolute w-[625px] h-[625px] rotate-90 bg-gradient-to-b from-[rgba(123,212,211,0.05)] to-[rgba(123,212,211,0.00)] rounded-[216.5px]"></div>
             
             <div className="absolute w-full h-full flex items-center justify-center">
               <div className="absolute w-[456px] h-[456px] border-[2px] border-dashed border-[#FFFFFF20] p-4 rounded-[130px]"/>
@@ -424,7 +424,7 @@ export default function Home() {
 
           {/* Right speed indicator */}
           <div ref={rightIndicatorRef} className="absolute right-0 w-[708px] h-[628px] flex items-center justify-center">
-            <div className="absolute w-[625px] h-[625px] -rotate-90 bg-gradient-to-b from-emerald-300/5 to-emerald-300/0 rounded-[216.5px]"></div>
+            <div className="absolute -rotate-90 w-[625px] h-[625px] bg-gradient-to-b from-[rgba(123,212,211,0.05)] to-[rgba(123,212,211,0.00)] rounded-[216.5px]"></div>
 
             {/*Qui la width e height è di un pixel più alta a causa di un piccolo distacco che ci sarebbe stato tra il bordo di confine e le linee ad X */}
             <div className="absolute min-w-[626px] w-[626px] min-h-[626px] h-[626px] z-20 flex items-center justify-center overflow-hidden">
