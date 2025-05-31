@@ -1,7 +1,7 @@
 'use client'
 
 import gsap from "gsap";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { SplitText } from "gsap/SplitText";
 import { CustomEase } from "gsap/CustomEase";
 import { SlowMo } from "gsap/EasePack";
