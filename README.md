@@ -26,6 +26,7 @@ Comandi usati per la creazione del progetto
 npx create-next-app@latest
 ```
 ^ Lasciando tutte le opzioni di default
+(Tailwind viene installato in questa fase e quindi non necessità l'installazione manuale)
 
 ```bash
 npm install gsap
