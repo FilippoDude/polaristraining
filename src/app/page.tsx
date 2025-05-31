@@ -43,7 +43,7 @@ export default function Home() {
 
   useEffect(() => {
     if(titlePlayerRef.current != null){
-      let split = new SplitText(titlePlayerRef.current, {
+      const split = new SplitText(titlePlayerRef.current, {
           type: "words, chars",
           position: "relative"
         }
@@ -57,7 +57,7 @@ export default function Home() {
     }
 
     if(destinationTextRef.current != null && destinationContainerRef.current != null){
-      let split = new SplitText(destinationTextRef.current, {
+      const split = new SplitText(destinationTextRef.current, {
           type: "words, chars",
           position: "relative"
         }
@@ -76,7 +76,7 @@ export default function Home() {
 
 
     if(subtitlePlayerRef.current != null){
-      let split = new SplitText(subtitlePlayerRef.current, {
+      const split = new SplitText(subtitlePlayerRef.current, {
           type: "words, chars",
           position: "relative"
         }
