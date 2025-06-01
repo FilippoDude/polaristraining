@@ -1,5 +1,4 @@
-Comando per lanciare il server di sviluppo
-
+# <h1 align="center"><samp>Design made by [Polaris](https://wearepolaris.it/) ✨</samp></h1>
 ```bash
 npm run dev
 ```
