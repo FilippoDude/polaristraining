@@ -1,4 +1,4 @@
-# <h1 align="center"><samp>Design made by [Polaris](https://wearepolaris.it/) ✨</samp></h1>
+# <h1 align="center"><samp>design made by [Polaris](https://wearepolaris.it/) ✨</samp></h1>
 ```bash
 npm run dev
 ```
