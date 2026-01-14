@@ -1,5 +1,7 @@
 # <h1 align="center"><samp>design made by [Polaris](https://wearepolaris.it/) ✨</samp></h1>
+
 # Live website [here](https://polaristraining.filippodude.com/)
+
 ```bash
 npm run dev
 ```
@@ -15,6 +17,7 @@ npm run build
 ```
 
 Tecnologie usate:
+
 - React
 - NextJs
 - Tailwind
@@ -25,6 +28,7 @@ Comandi usati per la creazione del progetto
 ```bash
 npx create-next-app@latest
 ```
+
 ^ Lasciando tutte le opzioni di default
 (Tailwind viene installato in questa fase e quindi non necessità l'installazione manuale)
 
